@@ -1,0 +1,15 @@
+Package: garmine
+Version: 0.0.0.9000
+Title: Mine Garmin FIT files
+Description: The goal of garmine is to provide a set of utility function to
+  extract information and get insights from Garmin FIT files.
+Authors@R: person("Corrado", "Lanera",
+    email = "corrado.lanera@gmail.com.it",
+    role  = c("aut", "cre")
+  )
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+Suggests: 
+    testthat
