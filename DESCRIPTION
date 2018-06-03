@@ -13,3 +13,5 @@ LazyData: true
 ByteCompile: true
 Suggests: 
     testthat
+URL: https://github.com/UBESP-DCTV/garmine
+BugReports: https://github.com/UBESP-DCTV/garmine/issues
