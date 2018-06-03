@@ -1,4 +1,4 @@
 library(testthat)
-library(garmine)
+library(garminer)
 
-test_check("garmine")
+test_check("garminer")

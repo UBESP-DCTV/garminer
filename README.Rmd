@@ -12,16 +12,19 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# garmine
+# garminer
 
-The goal of garmine is to ...
+The goal of garminer is to provide a set of utility function to extract
+information and get insights from Garmin FIT files.
 
 ## Installation
 
-You can install the released version of garmine from [CRAN](https://CRAN.R-project.org) with:
+You can install the develop version of garminer from
+[GITHUB](https://github.com) with:
 
 ``` r
-install.packages("garmine")
+# install.packages("devtools")
+devtools::install_github("garminer")
 ```
 
 ## Example

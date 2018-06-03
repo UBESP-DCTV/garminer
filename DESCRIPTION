@@ -1,7 +1,7 @@
-Package: garmine
+Package: garminer
 Version: 0.0.0.9000
 Title: Mine Garmin FIT files
-Description: The goal of garmine is to provide a set of utility function to
+Description: The goal of garminer is to provide a set of utility function to
   extract information and get insights from Garmin FIT files.
 Authors@R: person("Corrado", "Lanera",
     email = "corrado.lanera@gmail.com.it",
@@ -13,5 +13,5 @@ LazyData: true
 ByteCompile: true
 Suggests: 
     testthat
-URL: https://github.com/UBESP-DCTV/garmine
-BugReports: https://github.com/UBESP-DCTV/garmine/issues
+URL: https://github.com/UBESP-DCTV/garminer
+BugReports: https://github.com/UBESP-DCTV/garminer/issues
