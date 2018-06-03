@@ -12,6 +12,11 @@ Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 Suggests: 
-    testthat
+    testthat,
+    covr
 URL: https://github.com/UBESP-DCTV/garminer
 BugReports: https://github.com/UBESP-DCTV/garminer/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Imports: 
+    magrittr

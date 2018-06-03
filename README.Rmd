@@ -12,6 +12,13 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
+[![Travis build status](https://travis-ci.org/UBESP-DCTV/garminer.svg?branch=master)](https://travis-ci.org/UBESP-DCTV/garminer)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/UBESP-DCTV/garminer?branch=master&svg=true)](https://ci.appveyor.com/project/UBESP-DCTV/garminer)
+[![Coverage status](https://codecov.io/gh/UBESP-DCTV/garminer/branch/master/graph/badge.svg)](https://codecov.io/github/UBESP-DCTV/garminer?branch=master)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN status](https://www.r-pkg.org/badges/version/garminer)](https://cran.r-project.org/package=garminer)
+
 # garminer
 
 The goal of garminer is to provide a set of utility function to extract
@@ -22,31 +29,19 @@ information and get insights from Garmin FIT files.
 You can install the develop version of garminer from
 [GITHUB](https://github.com) with:
 
-``` r
+```{r installation, eval=FALSE}
 # install.packages("devtools")
-devtools::install_github("garminer")
+devtools::install_github("UBESP-DCTV/garminer")
 ```
 
-## Example
 
-This is a basic example which shows you how to solve a common problem:
+## Bug reports
+If you encounter a bug, please file a
+[reprex](https://github.com/tidyverse/reprex) (minimal reproducible example)
+to <https://github.com/UBESP-DCTV/garminer/issues>
 
-```{r example}
-## basic example code
-```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+## Code of conduct
+Please note that this project is released with a
+[Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this
+project you agree to abide by its terms.
