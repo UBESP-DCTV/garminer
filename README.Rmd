@@ -34,6 +34,35 @@ You can install the develop version of garminer from
 devtools::install_github("UBESP-DCTV/garminer")
 ```
 
+## Usage
+```{r}
+library(garminer)
+library(tidyverse)
+library(lubridate)
+library(RColorBrewer)
+# check java is correctly instaled and accessible
+ciao <- list.files('data-raw/2018-06-02/') %>%
+  set_names(.) %>% 
+  map(~read_fit(paste0('data-raw/2018-06-02/', .x)))
+
+
+
+
+
+ciao %>% 
+  map_df('monitoring') %>% 
+    mutate(time = adjust_time(`timestamp[s]`, `timestamp_16[s]`, convert = FALSE)) %>% select(time, `timestamp[s]`, `timestamp_16[s]`)
+    ggplot(aes(x = `time`, y = `heart_rate[bpm]`, colour = `heart_rate[bpm]`)) + 
+    geom_point() +
+    scale_color_gradient(low="blue", high="red")
+
+```
+
+
+
+
+
+
 
 ## Bug reports
 If you encounter a bug, please file a
