@@ -1,5 +1,6 @@
 # garminer 0.0.1
 
+* Just start to setup some tests
 * Added the following **exported** function:
   - `import_monitoring()`: import the *monitoring* data from a (set of) FIT
     file(s) (all of them) into a (same) folder.
