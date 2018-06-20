@@ -1,24 +1,30 @@
 Package: garminer
-Version: 0.0.0.9000
 Title: Mine Garmin FIT files
+Version: 0.0.1
 Date: "`r Sys.Date()`"
-Description: The goal of garminer is to provide a set of utility function to
-  extract information and get insights from Garmin FIT files.
 Authors@R: person("Corrado", "Lanera",
     email = "corrado.lanera@gmail.com.it",
     role  = c("aut", "cre")
   )
 Maintainer: Corrado Lanera <corrado.lanera@unipd.it>
+Description: The goal of garminer is to provide a set of utility function to
+  extract information and get insights from Garmin FIT files.
 License: GPL-3
-Encoding: UTF-8
-LazyData: true
-ByteCompile: true
-Suggests: 
-    testthat (>= 2.0.0),
-    covr (>= 3.0.1)
 URL: https://github.com/UBESP-DCTV/garminer
 BugReports: https://github.com/UBESP-DCTV/garminer/issues
+Imports: 
+    dplyr (>= 0.7.5),
+    ggplot2 (>= 2.2.1),
+    lubridate (>= 1.7.4),
+    magrittr (>= 1.5),
+    purrr (>= 0.2.5),
+    readr (>= 1.1.1),
+    tidyr (>= 0.8.1)
+Suggests: 
+    covr (>= 3.0.1),
+    testthat
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
-Imports: 
-    magrittr (>= 1.5)

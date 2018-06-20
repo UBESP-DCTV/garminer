@@ -36,25 +36,20 @@ devtools::install_github("UBESP-DCTV/garminer")
 
 ## Usage
 ```{r}
-library(garminer)
-library(tidyverse)
-library(lubridate)
-library(RColorBrewer)
-# check java is correctly instaled and accessible
-ciao <- list.files('data-raw/2018-06-02/') %>%
-  set_names(.) %>% 
-  map(~read_fit(paste0('data-raw/2018-06-02/', .x)))
+suppressPackageStartupMessages(library(garminer))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(lubridate))
+suppressPackageStartupMessages(library(RColorBrewer))
 
+cl_monitoring_data <- import_monitoring("data-raw", fit_date = "2018-06-02")
 
-
-
-
-ciao %>% 
-  map_df('monitoring') %>% 
-    mutate(time = adjust_time(`timestamp[s]`, `timestamp_16[s]`, convert = FALSE)) %>% select(time, `timestamp[s]`, `timestamp_16[s]`)
-    ggplot(aes(x = `time`, y = `heart_rate[bpm]`, colour = `heart_rate[bpm]`)) + 
-    geom_point() +
-    scale_color_gradient(low="blue", high="red")
+cl_monitoring_data %>% 
+    ggplot(aes(`timestamp`, `heart_rate[bpm]`, colour = `heart_rate[bpm]`)) + 
+    geom_line() +
+    scale_color_gradient(low="blue", high="red") +
+    xlab("")
+    theme_bw() +
+    theme(legend.position = "top")
 
 ```
 

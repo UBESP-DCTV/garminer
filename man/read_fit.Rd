@@ -4,14 +4,28 @@
 \alias{read_fit}
 \title{Read FIT files}
 \usage{
-read_fit(path_to_fit, ..., tidy = TRUE, quietly = FALSE, verbose = FALSE)
+read_fit(path_to_fit, ..., quietly = FALSE, verbose = FALSE)
 }
 \arguments{
-\item{verbose}{}
+\item{path_to_fit}{\code{[chr]} the path to the FIT file}
+
+\item{...}{additional argument passed to \code{\link[readr]{read_csv}}}
+
+\item{quietly}{\code{[lgl]} Would you like to know what the function is doing?
+(default is FALSE)}
+
+\item{verbose}{\code{[lgl]} Would you like to know (also) what
+\code{\link[readr]{read_csv}} is doing?}
+}
+\value{
+a list of dataframe, each one for each kind of data stored into the
+FIT file provided.
 }
 \description{
 Read FIT files
 }
 \examples{
-read_fit("./data-raw/2018-06-02/21188777597.fit")
+\dontrun{
+  read_fit("./data-raw/2018-06-02/21188777597.fit")
+}
 }

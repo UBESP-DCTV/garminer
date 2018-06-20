@@ -1,17 +1,21 @@
 #' Read FIT files
 #'
-#' @param path_to_fit
-#' @param ...
-#' @param tidy
-#' @param quietly
-#' @param verbose
+#' @param path_to_fit \code{[chr]} the path to the FIT file
+#' @param ... additional argument passed to \code{\link[readr]{read_csv}}
+#' @param quietly \code{[lgl]} Would you like to know what the function is doing?
+#'   (default is FALSE)
+#' @param verbose \code{[lgl]} Would you like to know (also) what
+#'   \code{\link[readr]{read_csv}} is doing?
 #'
-#' @return
+#' @return a list of dataframe, each one for each kind of data stored into the
+#'   FIT file provided.
 #' @export
 #'
 #' @examples
-#' read_fit("./data-raw/2018-06-02/21188777597.fit")
-read_fit <- function(path_to_fit,
+#' \dontrun{
+#'   read_fit("./data-raw/2018-06-02/21188777597.fit")
+#' }
+read_fit <- function(path_to_fit, # = 'data-raw/2018-06-02/21189460514.fit',
                      ...,
                      quietly = FALSE,
                      verbose = FALSE
@@ -23,8 +27,8 @@ read_fit <- function(path_to_fit,
   log_fit <- system2("java",
     args   = c(
       "-jar", java_fit(),
-      "-b",   path_to_fit, tmp#,
-      #"--data"
+      "-b",   path_to_fit, tmp,
+      "--data"
     ),
     stdout = TRUE
   )
@@ -39,7 +43,7 @@ read_fit <- function(path_to_fit,
     ))
   }
 
-  fit_df %>% select(matches('time'))
+  fit_df %>%
     dplyr::mutate(num = row.names(.)) %>%
     tidyr::gather("key", "value", na.rm = TRUE, -num) %>%
 #    dplyr::distinct(key, value, .keep_all = TRUE) %>%

@@ -1,36 +1,33 @@
 #' Adjust time
 #'
-#' @param timestamp integer, the timestamp\[s\] field of FIT file
-#' @param timestamp_16 integer, the timestamp_16\[s\] field of FIT file
-#' @param convert if TRUE convert the string into a datetime object (default
-#'        is TRUE)
-#' @param timezone character representing the timezone of input
+#' @param timestamp integer, the `timestamp[s]` field of FIT file
+#' @param timestamp_16 integer, the `timestamp_16[s]` field of FIT file
+#' @param timezone character representing the timezone of input.
+#' @param origin time origin.
+#' @param min_time \code{[dttm]} minimum acceptable time, any output before this time
+#'        will be NA. If NULL (default) no minimum constrains will be applied.
+#' @param max_time \code{[dttm]} maximum acceptable time, any output after this time
+#'        will be NA. If NULL (default) no maximum constrains will be applied .
 #'
-#' @return
-#' @export
+#' @return a \code{[dttm]} vector
 #'
-#' @examples
-adjust_time <- function(timestamp, timestamp_16,
-                        convert  = TRUE,
+adjust_time <- function(timestamp,
+                        timestamp_16,
                         timezone = 'UTC',
-                        alternate = FALSE
+                        origin   = '1989-12-31  01:59:00',
+                        min_time = NULL,
+                        max_time = NULL
 ) {
+  adjusted_time <- timestamp - timestamp %% 2^16 + timestamp_16 %>%
+    lubridate::as_datetime(origin = origin)
 
-  timestamp_16[is.na(timestamp_16)] <- 0L
-  if (alternate) {
-    adjusted <- timestamp + timestamp_16
-  } else {
-    adjusted <- stringr::str_replace_all(
-      string      = timestamp,
-      pattern     = paste0('.{5}$'),
-      replacement = sprintf("%05d", timestamp_16)
-    )
+  is.null(min_time) || {
+    adjusted_time[adjusted_time < min_time] <- NA
   }
 
-  if (convert) {
-    adjusted <- lubridate::as_datetime(as.integer(adjusted),
-      origin = paste0('1989-12-31 ')
-    )
+  is.null(max_time) || {
+    adjusted_time[adjusted_time > max_time] <- NA
   }
-  adjusted
+
+  adjusted_time
 }

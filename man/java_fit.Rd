@@ -7,7 +7,7 @@
 java_fit()
 }
 \value{
-\link{chr} path to the \code{FitCSVTool} program
+\code{[chr]} path to the \code{FitCSVTool} program
 }
 \description{
 This function possibly return the system-specific path to
