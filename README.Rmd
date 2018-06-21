@@ -46,10 +46,13 @@ cl_monitoring_data <- import_monitoring("data-raw", fit_date = "2018-06-02")
 cl_monitoring_data %>% 
     ggplot(aes(`timestamp`, `heart_rate[bpm]`, colour = `heart_rate[bpm]`)) + 
     geom_line() +
-    scale_color_gradient(low="blue", high="red") +
-    xlab("")
+    scale_color_gradient(low="blue", high="red",
+      name = expression(paste('Heart rate '['bpm']))
+    ) +
+    ylab(expression(paste('Heart rate '['bpm']))) +
+    xlab(expression(paste('Time'))) +
     theme_bw() +
-    theme(legend.position = "top")
+    ggtitle("Hearth Rate along a day", subtitle = "2018-06-02")
 
 ```
 

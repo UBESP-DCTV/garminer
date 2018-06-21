@@ -26,6 +26,39 @@ You can install the develop version of garminer from
 devtools::install_github("UBESP-DCTV/garminer")
 ```
 
+## Usage
+
+``` r
+suppressPackageStartupMessages(library(garminer))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(lubridate))
+suppressPackageStartupMessages(library(RColorBrewer))
+
+cl_monitoring_data <- import_monitoring("data-raw", fit_date = "2018-06-02")
+#> Warning: Removed 48 rows containing missing values.
+#> Warning: Removed 1 rows containing missing values.
+
+cl_monitoring_data %>% 
+    ggplot(aes(`timestamp`, `heart_rate[bpm]`, colour = `heart_rate[bpm]`)) + 
+    geom_line() +
+    scale_color_gradient(low="blue", high="red",
+      name = expression(paste('Heart rate '['bpm']))
+    ) +
+    ylab(expression(paste('Heart rate '['bpm']))) +
+    xlab(expression(paste('Time'))) +
+    theme_bw() +
+    theme(legend.position = "right") + 
+    ggtitle("Hearth Rate along a day", subtitle = "2018-06-02")
+```
+
+<img src="man/figures/README-unnamed-chunk-1-1.png" width="100%" />
+
+## Bug reports
+
+If you encounter a bug, please file a
+[reprex](https://github.com/tidyverse/reprex) (minimal reproducible
+example) to <https://github.com/UBESP-DCTV/garminer/issues>
+
 ## Code of conduct
 
 Please note that this project is released with a [Contributor Code of
